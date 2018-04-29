@@ -7,10 +7,11 @@ Made with React, Firebase and Material-UI
 
 ## Installation
 
-```javascript
-    npm install
-    ```
-## Run
-```javascript
-    npm start
-    ```
+	```javascript
+	    npm install
+	 ```
+
+Run
+	```javascript
+	    npm start
+	 ```
