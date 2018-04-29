@@ -7,7 +7,7 @@ Made with React, Firebase and Material-UI
 
 ## Installation
 
-	```javascript
+	```
 	    npm install
 	 ```
 
