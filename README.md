@@ -12,7 +12,7 @@ Install dependencies:
 	
 	    npm install
 	    
-	Run:
+Run:
 	
 	    npm start
 ```
