@@ -10,7 +10,7 @@ Made with React, Firebase and Material-UI
 ```javascript
     npm install
     ```
-
+## Run
 ```javascript
     npm start
     ```
