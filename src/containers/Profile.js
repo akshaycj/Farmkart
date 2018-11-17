@@ -170,7 +170,7 @@ export default class Profile extends React.Component{
             </div>
 
               <div className="button-line">
-                {!this.state.open?<RaisedButton  label="Done" primary onTouchTap={this.onDivUpdate}/>:<div></div>}
+                {!this.state.open?<RaisedButton  label="Done" primary onClick={this.onDivUpdate}/>:<div></div>}
               </div>
         </Card>
         {this.state.open?
@@ -190,7 +190,7 @@ export default class Profile extends React.Component{
               {this.state.chipData.map(this.renderChip, this)}
             </div>
             <br /> <br />
-            <RaisedButton label="Done" primary onTouchTap={this.onDataUpdate.bind(this)}/>
+            <RaisedButton label="Done" primary onClick={this.onDataUpdate.bind(this)}/>
             <br/>
         </Card>
         :

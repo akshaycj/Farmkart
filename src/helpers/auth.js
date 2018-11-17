@@ -32,16 +32,18 @@ export async function login (email, pw) {
 
 export function setSeller(user){
   if(user){
-
-    ref.child('users/'+user.uid).once('value',function(snapshot){
+    console.log("uid",user);
+    
+    ref.child('users/'+user.user.uid).once('value',function(snapshot){
       var data ={
         email:'',
-        seller,
+        seller:'',
       };
 
       data = snapshot.val();
 
       seller= data.seller;
+      window.location='/app'
       console.log("seller",seller);
     })
   }

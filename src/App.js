@@ -6,6 +6,7 @@ import AutoComplete from 'material-ui/AutoComplete';
 import {getData} from './helpers/data';
 import Person from 'material-ui/svg-icons/maps/person-pin';
 import Call  from 'material-ui/svg-icons/communication/call';
+import Bag from 'material-ui/svg-icons/action/shopping-basket'
 import {List, ListItem} from 'material-ui/List';
 import Divider from 'material-ui/Divider';
 
@@ -70,6 +71,9 @@ class App extends Component {
     });
   }
 
+  onUpdateInput = (val,obj)=>{
+    this.setState({searchText:val})
+  }
   onDragEnd(e) {
     console.log('onDragEnd', e);
   }
@@ -117,30 +121,7 @@ class App extends Component {
     const data= this.state.data;
 
     for(let i=0; i<data.length; i++){
-      items.push(
-        <Card >
-        <CardHeader
-          avatar={<Person color="#0a7e07"/>}
-          title={data[i].name}
-          subtitle={data[i].address}
-          actAsExpander={true}
-          showExpandableButton={true}
-        />
-        <CardText expandable={true}>
-          <div >
-
-            <List>
-
-              <ListItem
-                leftIcon={<Call color="#0a7e07" />}
-                primaryText={data[i].phone}
-                secondaryText="Mobile"
-              />
-
-            </List>
-          </div>
-      </CardText>
-    </Card>);
+     
       mark.push(
           <Marker
             lat={data[i].lat}
@@ -192,6 +173,7 @@ class App extends Component {
       <div style={{display:'flex',flexDirection:'column',justifyContent:'flex-start'}}>
 
         <AutoComplete
+        onUpdateInput={this.onUpdateInput}
           onNewRequest={this.onDataUpdate}
           searchText={this.state.searchText}
           floatingLabelText="Example: 'Thakkali' or 'Tomato' "
@@ -200,7 +182,48 @@ class App extends Component {
           maxSearchResults={7}
           />
         <br />
-        {items}
+        {this.state.data.map(data=>(
+          <Card >
+          <CardHeader
+            avatar={<Person color="#0a7e07"/>}
+            title={data.name}
+            subtitle={data.address}
+            actAsExpander={true}
+            showExpandableButton={true}
+          />
+          <CardText expandable={true}>
+            <div >
+  
+              <List>
+  
+                <ListItem
+                  leftIcon={<Call color="#0a7e07" />}
+                  primaryText={data.phone}
+                  secondaryText="Mobile"
+                />
+                
+              </List>
+              <Card>
+              <CardHeader
+            avatar={<Bag color="#0a7e07"/>}
+            title="Veggies"
+            
+            actAsExpander={true}
+            showExpandableButton={true}
+          />
+          <CardText expandable={true}>
+                {data.veggies.map((item,index)=>(
+                  <ListItem
+                  primaryText={item}
+                />
+                ))}
+                </CardText>
+              </Card>
+              
+            </div>
+        </CardText>
+      </Card>
+        ))}
       </div>
       </div>
     );

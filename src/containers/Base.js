@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { Link, IndexLink } from 'react-router';
+import { Link } from 'react-router-dom';
 import { firebaseAuth, ref} from '../helpers/constants'
 import { logout } from '../helpers/auth';
 import AppBar from 'material-ui/AppBar';
@@ -78,11 +78,11 @@ class Base extends React.Component{
     return(<div>
       <div >
           <AppBar
-          title="FarmKart"
-          onLeftIconButtonTouchTap={this.onDrawerClick}
-          iconElementRight={this.state.logged?<Link to="/login" onClick={this.onLogout}>
+          title={<Link to='/app'>FarmKart</Link> }
+          onLeftIconButtonClick={this.onDrawerClick}
+          iconElementRight={this.state.logged?<Link to="/" onClick={this.onLogout}>
           <FlatButton label="Log Out" labelStyle={this.style.labelText} style={{marginTop:5}}/></Link>:<div style={{marginTop:5}}>
-            <Link to="/login" ><FlatButton label="Log in" labelStyle={this.style.labelText}/></Link>
+            <Link to="/" ><FlatButton label="Log in" labelStyle={this.style.labelText}/></Link>
             <Link to="/signup"><FlatButton label="Sign Up" labelStyle={this.style.labelText}/></Link>
           </div>}
           />

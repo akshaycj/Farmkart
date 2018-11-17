@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { auth } from '../helpers/auth';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import { Card, CardText } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
@@ -153,7 +153,7 @@ class SignUpPage extends React.Component {
             <RaisedButton type="submit" label="Create New Account" primary />
           </div>
 
-          <CardText >Already have an account? <Link to={'/login'} style={{color:"#259b24"}}>Log in</Link></CardText>
+          <CardText >Already have an account? <Link to={'/'} style={{color:"#259b24"}}>Log in</Link></CardText>
         </form>
       </Card>
 
