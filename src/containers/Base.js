@@ -60,6 +60,7 @@ class Base extends React.Component{
     if(user){
 
       ref.child('users/'+user.uid).once('value',function(snapshot){
+       if(snapshot.exists()){
         var data ={
           email:'',
           seller:false,
@@ -67,6 +68,7 @@ class Base extends React.Component{
 
         data = snapshot.val();
         self.setState({seller:data.seller});
+       }
 
       })
     }
@@ -92,7 +94,7 @@ class Base extends React.Component{
             containerStyle={{'position': 'absolute', 'top': '64px'}}
            >
 
-          {this.state.seller?<MenuItem onTouchTap={this.onDrawerClick}><Link to="/profile"><FlatButton label="Profile" /></Link></MenuItem>:<div></div>}
+          {this.state.seller?<MenuItem onClick={this.onDrawerClick}><Link to="/profile"><FlatButton label="Profile" /></Link></MenuItem>:<div></div>}
 
          </Drawer>
 

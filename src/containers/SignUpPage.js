@@ -79,7 +79,9 @@ class SignUpPage extends React.Component {
         var delayMillis = 2000;
 
         setTimeout(function(){this.setState({progress: false});
-        this.setState({open: true});}.bind(this),delayMillis);
+        this.setState({open: true});
+        window.location='/'
+      }.bind(this),delayMillis);
 
       console.log('stop','asd');
     }

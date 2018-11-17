@@ -51,9 +51,9 @@ export function setSeller(user){
 }
 
 export function saveUser (user,toggled) {
-  return ref.child(`users/${user.uid}`)
+  return ref.child(`users/${user.user.uid}`)
     .set({
-      email: user.email,
+      email: user.user.email,
       seller:toggled,
     })
     .then(() => user)
