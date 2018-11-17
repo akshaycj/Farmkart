@@ -33,7 +33,7 @@ export async function login (email, pw) {
 export function setSeller(user){
   if(user){
     console.log("uid",user);
-    
+    window.location='/app'
     ref.child('users/'+user.user.uid).once('value',function(snapshot){
       var data ={
         email:'',
@@ -43,7 +43,7 @@ export function setSeller(user){
       data = snapshot.val();
 
       seller= data.seller;
-      window.location='/app'
+      
       console.log("seller",seller);
     })
   }
