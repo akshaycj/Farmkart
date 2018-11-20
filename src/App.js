@@ -9,6 +9,7 @@ import Call  from 'material-ui/svg-icons/communication/call';
 import Bag from 'material-ui/svg-icons/action/shopping-basket'
 import {List, ListItem} from 'material-ui/List';
 import Divider from 'material-ui/Divider';
+import Chip from 'material-ui/Chip';
 
  var coords = {
   lat: 10.04428654,
@@ -58,7 +59,7 @@ class App extends Component {
         }
   }
 
-  onDataUpdate(obj,id){
+  onDataUpdate(obj){
     var self =this;
 
     getData(obj,coords).then(function(data){self.setState({data}); console.log("data",self.state.data);})
@@ -97,6 +98,13 @@ class App extends Component {
     }
     return d;
   } */
+
+  onChipClick = (e) =>{
+    console.log("ee",e);
+
+    this.setState({searchText:e})
+    
+  }
   render() {
     const veggies=[
       "Uralakizhangu – Potato",
@@ -139,7 +147,18 @@ class App extends Component {
     }
 
     return (
-      <div style={{
+      <div>
+        <h3>Available Veggies: </h3>
+        <div style={{display:'flex',flexWrap:'wrap',padding:5,margin:5,border:'1px dashed',borderColor:'rgba(0,0,0,0.3)'}} >
+        {veggies.map(item=>(
+          <Chip style={{margin:4}} key={item} onClick={this.onDataUpdate.bind(this,item)} >
+            {item}
+          </Chip>
+        ))}
+        </div>
+        <br />
+
+        <div style={{
       margin:10,
       display: 'flex',
       flexDirection:'row',
@@ -224,6 +243,7 @@ class App extends Component {
         </CardText>
       </Card>
         ))}
+      </div>
       </div>
       </div>
     );
